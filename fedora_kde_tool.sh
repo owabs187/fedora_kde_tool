@@ -80,6 +80,8 @@ if [ $? -eq 0 ]; then
   check_command
   sudo dnf install libdvdcss
   check_command
+  sudo dnf groupupdate core
+  check_command
   echo "RPM Fusion repositories and multimedia codecs installed successfully."
 fi
 
