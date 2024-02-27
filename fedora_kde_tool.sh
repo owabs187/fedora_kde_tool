@@ -2,7 +2,7 @@
 
 # This script is liscenced under the 3-Clause BSD License.
 #
-# Copyright (c) 2024, OWABS
+# Copyright (c) 2024, owabs187
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -61,28 +61,34 @@ if [ $? -eq 0 ]; then
   echo "KDE debloat completed successfully."
 fi
 
-# Install RPM Fusion Repositories and Multimedia Codecs (optional)
-prompt_yes_no "Do you want to install RPM Fusion Repositories and Multimedia Codecs?"
+# Install RPM Fusion Repositories (optional)
+prompt_yes_no "Do you want to install RPM Fusion Repositories?"
 if [ $? -eq 0 ]; then
-  echo -e "\nPress enter to install RPM Fusion repos and install multimedia codecs"
+  echo -e "\nPress enter to install RPM Fusion repositories"
   read
   sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
   check_command
   sudo dnf config-manager --enable fedora-cisco-openh264
   check_command
-  sudo dnf swap ffmpeg-free ffmpeg --allowerasing
-  check_command
-  sudo dnf groupupdate multimedia --setopt="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
-  check_command
-  sudo dnf groupupdate sound-and-video
-  check_command
   sudo dnf install rpmfusion-free-release-tainted
   check_command
-  sudo dnf install libdvdcss
-  check_command
-  sudo dnf groupupdate core
-  check_command
-  echo "RPM Fusion repositories and multimedia codecs installed successfully."
+  echo "RPM Fusion repositories installed successfully."
+
+  # Install Multimedia Codecs (optional)
+  prompt_yes_no "Do you want to install Multimedia Codecs?"
+  if [ $? -eq 0 ]; then
+    echo -e "\nPress enter to install multimedia codecs"
+    read
+    sudo dnf swap ffmpeg-free ffmpeg --allowerasing
+    check_command
+    sudo dnf groupupdate multimedia --setopt="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
+    check_command
+    sudo dnf groupupdate sound-and-video
+    check_command
+    sudo dnf install libdvdcss
+    check_command
+    echo "Multimedia codecs installed successfully."
+  fi
 fi
 
 # Graphics Driver Selection (optional)
