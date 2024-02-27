@@ -72,6 +72,8 @@ if [ $? -eq 0 ]; then
   check_command
   sudo dnf install rpmfusion-free-release-tainted
   check_command
+  sudo dnf groupupdate core
+  check_command
   echo "RPM Fusion repositories installed successfully."
 
   # Install Multimedia Codecs (optional)
