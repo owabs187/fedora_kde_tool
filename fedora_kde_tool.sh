@@ -2,7 +2,7 @@
 
 # This script is liscenced under the 3-Clause BSD License.
 #
-# Copyright (c) 2024, OWABS
+# Copyright (c) 2024, owabs187
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
