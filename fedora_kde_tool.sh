@@ -144,5 +144,15 @@ if [ $? -eq 0 ]; then
   echo "Development packages installed successfully."
 fi
 
+# Install Homebrew (optional)
+prompt_yes_no "Do you want to install Homebrew?"
+if [ $? -eq 0 ]; then
+  echo -e "\nPress enter to install Homebrew"
+  read
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  check_command
+  echo "Homebrew installed successfully. (NOTE - You may need to add homebrew to $PATH. Read above log for more information.)"
+fi
+
 # Confirm completion
 echo -e "\nScript execution completed successfully."
