@@ -94,27 +94,30 @@ if [ $? -eq 0 ]; then
 fi
 
 # Graphics Driver Selection (optional)
-prompt_yes_no "Do you want to select and install a codec hardware acceleration driver?"
+prompt_yes_no "Do you want to install enhanced graphics drivers?"
 if [ $? -eq 0 ]; then
   read -p "Enter a character (I[intel], A[amd], N[nvidia], or X[none]): " char
   case $char in
     [iI])
       echo "Selected graphics driver: Intel"
-      # Install Intel graphics driver (recent)
+      # Install Intel graphics driver (recent SKUs only)
       sudo dnf install intel-media-driver
       check_command
       ;;
     [aA])
       echo "Selected graphics driver: AMD"
-      # Install AMD graphics driver (mesa)
+      # Install AMD graphics driver
       sudo dnf swap mesa-va-drivers mesa-va-drivers-freeworld
+      check_command
       sudo dnf swap mesa-vdpau-drivers mesa-vdpau-drivers-freeworld
+      check_command
+      sudo dnf install rocm-hip rocm-opencl rocm-rpm-macros rocm-runtime rocm-smi rocminfo
       check_command
       ;;
     [nN])
       echo "Selected graphics driver: Nvidia"
-      # Install Nvidia graphics driver (vaapi wrapper)
-      sudo dnf install nvidia-vaapi-driver
+      # Install Nvidia graphics driver
+      sudo dnf install sudo dnf install akmod-nvidia xorg-x11-drv-nvidia-cuda xorg-x11-drv-nvidia-cuda-libs nvidia-vaapi-driver
       check_command
       ;;
     [xX])
@@ -141,7 +144,7 @@ prompt_yes_no "Do you want to install development packages?"
 if [ $? -eq 0 ]; then
   echo -e "\nPress enter to install development packages"
   read
-  sudo dnf install make git automake gcc gcc-c++ gcc-gfortran gcc-gdc gdb kernel-devel rust cargo nasm golang java-21-openjdk java-21-openjdk-devel lua R SDL2 SDL2-devel SFML SFML-devel boost gmp gmp-devel gmp-c++ mpfr mpfr-devel python3 python3-pip
+  sudo dnf install make cmake git automake gcc gcc-c++ gcc-gfortran gcc-gdc gdb kernel-devel rust cargo nasm golang java-21-openjdk java-21-openjdk-devel lua R SDL2 SDL2-devel SFML SFML-devel boost gmp gmp-devel gmp-c++ mpfr mpfr-devel python3 python3-pip autoconf ccache fmt-devel glslang hidapi-devel json-devel libtool libusb1-devel libzstd-devel lz4-devel ninja-build openssl-devel pulseaudio-libs-devel qt5-linguist qt5-qtbase{-private,}-devel qt5-qtwebengine-devel qt5-qtmultimedia-devel speexdsp-devel wayland-devel zlib-devel ffmpeg-devel libXext-devel
   check_command
   echo "Development packages installed successfully."
 fi
