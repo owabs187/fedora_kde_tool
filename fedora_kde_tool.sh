@@ -144,7 +144,7 @@ prompt_yes_no "Do you want to install development packages?"
 if [ $? -eq 0 ]; then
   echo -e "\nPress enter to install development packages"
   read
-  sudo dnf install make git automake gcc gcc-c++ gcc-gfortran gcc-gdc gdb kernel-devel rust cargo nasm golang java-21-openjdk java-21-openjdk-devel lua R SDL2 SDL2-devel SFML SFML-devel boost gmp gmp-devel gmp-c++ mpfr mpfr-devel python3 python3-pip
+  sudo dnf install make git automake gcc gcc-c++ gcc-gfortran gcc-gdc gdb kernel-devel rust cargo nasm golang java-21-openjdk java-21-openjdk-devel lua R SDL2 SDL2-devel SFML SFML-devel boost gmp gmp-devel gmp-c++ mpfr mpfr-devel python3 python3-pip autoconf ccache fmt-devel glslang hidapi-devel json-devel libtool libusb1-devel libzstd-devel lz4-devel ninja-build openssl-devel pulseaudio-libs-devel qt5-linguist qt5-qtbase{-private,}-devel qt5-qtwebengine-devel qt5-qtmultimedia-devel speexdsp-devel wayland-devel zlib-devel ffmpeg-devel libXext-devel
   check_command
   echo "Development packages installed successfully."
 fi
