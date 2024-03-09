@@ -94,27 +94,30 @@ if [ $? -eq 0 ]; then
 fi
 
 # Graphics Driver Selection (optional)
-prompt_yes_no "Do you want to select and install a codec hardware acceleration driver?"
+prompt_yes_no "Do you want to install enhanced graphics drivers?"
 if [ $? -eq 0 ]; then
   read -p "Enter a character (I[intel], A[amd], N[nvidia], or X[none]): " char
   case $char in
     [iI])
       echo "Selected graphics driver: Intel"
-      # Install Intel graphics driver (recent)
+      # Install Intel graphics driver (recent SKUs only)
       sudo dnf install intel-media-driver
       check_command
       ;;
     [aA])
       echo "Selected graphics driver: AMD"
-      # Install AMD graphics driver (mesa)
+      # Install AMD graphics driver
       sudo dnf swap mesa-va-drivers mesa-va-drivers-freeworld
+      check_command
       sudo dnf swap mesa-vdpau-drivers mesa-vdpau-drivers-freeworld
+      check_command
+      sudo dnf install rocm-hip rocm-opencl rocm-rpm-macros rocm-runtime rocm-smi rocminfo
       check_command
       ;;
     [nN])
       echo "Selected graphics driver: Nvidia"
-      # Install Nvidia graphics driver (vaapi wrapper)
-      sudo dnf install nvidia-vaapi-driver
+      # Install Nvidia graphics driver
+      sudo dnf install sudo dnf install akmod-nvidia xorg-x11-drv-nvidia-cuda xorg-x11-drv-nvidia-cuda-libs nvidia-vaapi-driver
       check_command
       ;;
     [xX])
