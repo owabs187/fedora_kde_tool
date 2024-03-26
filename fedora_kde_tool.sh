@@ -56,7 +56,7 @@ prompt_yes_no "Do you want to debloat KDE?"
 if [ $? -eq 0 ]; then
   echo -e "\nPress enter to debloat KDE"
   read
-  sudo dnf remove akregator kamoso mediawriter elisa-player kmag kgpg qt5-qdbusviewer kcharselect kcolorchooser dragon kmines kmahjongg kmouth kpat kruler kmousetool kmouth kolourpaint konversation krdc kfind kaddressbook kmail kontact dragon-player krfb korganizer ktnef libreoffice-* kf5-akonadi-*
+  sudo dnf remove akregator kamoso mediawriter elisa-player kmag kgpg qt5-qdbusviewer qt6-qdbusviewer kcharselect kcolorchooser dragon kmines kmahjongg kmouth kpat kruler kmousetool kmouth kolourpaint konversation krdc kfind kaddressbook kmail kontact dragon-player krfb korganizer ktnef libreoffice-* kf5-akonadi-* kf6-akonadi-* akonadi-*
   check_command
   echo "KDE debloat completed successfully."
 fi
