@@ -144,7 +144,7 @@ prompt_yes_no "Do you want to install development packages?"
 if [ $? -eq 0 ]; then
   echo -e "\nPress enter to install development packages"
   read
-  sudo dnf install make cmake ccache git git-lfs automake autoconf bison flex gcc gcc-c++ python3 python3-pip gcc-gfortran gcc-gdc gdb kernel-devel rust cargo nasm golang java-latest-openjdk java-latest-openjdk-devel lua SDL2 SDL2-devel SFML SFML-devel boost boost-devel openblas openblas-devel gmp gmp-devel gmp-c++ mpfr mpfr-devel fmt fmt-devel
+  sudo dnf install make cmake ccache git git-lfs automake autoconf bison flex gcc gcc-c++ python3 python3-pip gcc-gfortran gcc-gdc gdb kernel-devel rust cargo nasm golang java-latest-openjdk java-latest-openjdk-devel lua SDL2 SDL2-devel SFML SFML-devel boost boost-devel openblas openblas-devel gmp gmp-devel gmp-c++ mpfr mpfr-devel fmt fmt-devel openssl openssl-libs openssl-devel
   check_command
   echo "Development packages installed successfully."
 fi
