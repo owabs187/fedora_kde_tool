@@ -111,8 +111,6 @@ if [ $? -eq 0 ]; then
       check_command
       sudo dnf swap mesa-vdpau-drivers mesa-vdpau-drivers-freeworld
       check_command
-      sudo dnf install rocm-hip rocm-opencl rocm-rpm-macros rocm-runtime rocm-smi rocminfo
-      check_command
       ;;
     [nN])
       echo "Selected graphics driver: Nvidia"
