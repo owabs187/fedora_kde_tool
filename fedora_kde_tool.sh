@@ -56,7 +56,7 @@ prompt_yes_no "Do you want to debloat KDE?"
 if [ $? -eq 0 ]; then
   echo -e "\nPress enter to debloat KDE"
   read
-  sudo dnf remove akregator kamoso mediawriter elisa-player kmag kgpg qt5-qdbusviewer kcharselect kcolorchooser dragon kmines kmahjongg kmouth kpat kruler kmousetool kmouth kolourpaint konversation krdc kfind kaddressbook kmail kontact dragon-player krfb korganizer ktnef libreoffice-* kf5-akonadi-*
+  sudo dnf remove akregator kamoso mediawriter elisa-player kmag kgpg qt5-qdbusviewer qt6-qdbusviewer kcharselect kcolorchooser dragon kmines kmahjongg kmouth kpat kruler kmousetool kmouth kolourpaint konversation krdc kfind kaddressbook kmail kontact dragon-player krfb korganizer ktnef libreoffice-* kf5-akonadi-* kf6-akonadi-* akonadi-*
   check_command
   echo "KDE debloat completed successfully."
 fi
@@ -111,13 +111,11 @@ if [ $? -eq 0 ]; then
       check_command
       sudo dnf swap mesa-vdpau-drivers mesa-vdpau-drivers-freeworld
       check_command
-      sudo dnf install rocm-hip rocm-opencl rocm-rpm-macros rocm-runtime rocm-smi rocminfo
-      check_command
       ;;
     [nN])
       echo "Selected graphics driver: Nvidia"
       # Install Nvidia graphics driver
-      sudo dnf install sudo dnf install akmod-nvidia xorg-x11-drv-nvidia-cuda xorg-x11-drv-nvidia-cuda-libs nvidia-vaapi-driver
+      sudo dnf install sudo dnf install akmod-nvidia xorg-x11-drv-nvidia-cuda xorg-x11-drv-nvidia-cuda-libs nvidia-vaapi-driver libva-utils vdpauinfo
       check_command
       ;;
     [xX])
@@ -144,7 +142,7 @@ prompt_yes_no "Do you want to install development packages?"
 if [ $? -eq 0 ]; then
   echo -e "\nPress enter to install development packages"
   read
-  sudo dnf install make cmake git git-lfs automake autoconf bison flex gcc gcc-c++ gcc-gfortran gcc-gdc gdb kernel-devel rust cargo nasm golang java-latest-openjdk java-latest-openjdk-devel lua R SDL2 SDL2-devel SFML SFML-devel boost boost-devel openblas openblas-devel gmp gmp-devel gmp-c++ mpfr mpfr-devel python3 python3-pip ccache fmt fmt-devel
+  sudo dnf install make cmake ccache git git-lfs automake autoconf bison flex gcc gcc-c++ gcc-gfortran gcc-gdc gdb llvm clang lldb lld python3 python3-pip kernel-devel rust cargo nasm golang java-latest-openjdk java-latest-openjdk-devel lua SDL2 SDL2-devel SFML SFML-devel boost boost-devel openblas openblas-devel gmp gmp-devel gmp-c++ mpfr mpfr-devel fmt fmt-devel openssl openssl-libs openssl-devel
   check_command
   echo "Development packages installed successfully."
 fi
