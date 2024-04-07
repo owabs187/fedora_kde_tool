@@ -115,7 +115,7 @@ if [ $? -eq 0 ]; then
     [nN])
       echo "Selected graphics driver: Nvidia"
       # Install Nvidia graphics driver
-      sudo dnf install sudo dnf install akmod-nvidia xorg-x11-drv-nvidia-cuda xorg-x11-drv-nvidia-cuda-libs nvidia-vaapi-driver
+      sudo dnf install sudo dnf install akmod-nvidia xorg-x11-drv-nvidia-cuda xorg-x11-drv-nvidia-cuda-libs nvidia-vaapi-driver libva-utils vdpauinfo
       check_command
       ;;
     [xX])
