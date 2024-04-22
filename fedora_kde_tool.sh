@@ -87,8 +87,6 @@ if [ $? -eq 0 ]; then
     check_command
     sudo dnf groupupdate sound-and-video
     check_command
-    sudo dnf install libdvdcss
-    check_command
     echo "Multimedia codecs installed successfully."
   fi
 fi
