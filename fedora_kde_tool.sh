@@ -125,16 +125,6 @@ if [ $? -eq 0 ]; then
   esac
 fi
 
-# Install Google Noto Fonts (optional)
-prompt_yes_no "Do you want to install Google Noto Fonts?"
-if [ $? -eq 0 ]; then
-  echo -e "\nPress enter to install Google Noto Fonts"
-  read
-  sudo dnf install google-noto-* --best --allowerasing --skip-broken
-  check_command
-  echo "Google Noto Fonts installed successfully."
-fi
-
 # Install Development Packages (optional)
 prompt_yes_no "Do you want to install development packages?"
 if [ $? -eq 0 ]; then
